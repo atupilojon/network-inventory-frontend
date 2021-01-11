@@ -1,18 +1,33 @@
-import React from 'react'
-import { slide as Menu } from 'react-burger-menu'
+import React, { useState} from 'react'
+import {GoCircuitBoard} from 'react-icons/go'
+import {GoThreeBars} from 'react-icons/go'
 
 export default function SideBar() {
+
+    const [show, setShow] = useState(false)
+
+    const handleShow = () => {
+        setShow(prevState => !prevState)
+        console.log(show)
+    }
+
+    const style = {
+        menu: {
+            fontSize: '3rem',
+            paddingLeft: '0.75vw'
+        }
+    }
+
+    const collapsed = <GoCircuitBoard style={style.menu} type='button' onClick={handleShow}/>
+    const listMenu = <GoThreeBars style={style.menu} type='button' onClick={handleShow}/>
+
     return (
-        <Menu>
-            <a className='menu-item'>
-                Devices
-            </a>
-            <a className='menu-item'>
-                Connections
-            </a>
-            <a className='menu-item'>
-                IP Addresses
-            </a>
-        </Menu>
+        <div>
+            { show ?
+                (collapsed)
+                :
+                (listMenu)
+            }
+        </div>
     )
 }

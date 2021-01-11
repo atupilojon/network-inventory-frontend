@@ -4,11 +4,21 @@ import Footer from "./footer";
 import SideBar from "./sidebar";
 
 const MainLayout = ({ children, ...rest }) => {
+
+    const styleMainView = {
+        display: 'inline-grid',
+        gridTemplateColumns: 'auto auto',
+        gridColumnGap: '0.75vw',
+        height: '100vh'
+    }
+
     return (
-        <div id='screen'>
+        <div>
             <Header/>
-            <SideBar pageWrapId={'page-wrap'} outerContainerId={'screen'}/>
-            {children}
+            <div style={styleMainView}>
+                <SideBar/>
+                {children}
+            </div>
             <Footer/>
         </div>
     )
